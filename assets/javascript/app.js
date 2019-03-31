@@ -1,4 +1,4 @@
- // Initialize Firebase
+// Initialize Firebase
 var config = {
   apiKey: "AIzaSyAxECsjpvYp3f73lOo41_dj4TfNIhlczU8",
   authDomain: "movie-tinder-69319.firebaseapp.com",
@@ -12,6 +12,22 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 $(document).on("click", '#movie-2000_2009', function () {
+
+  $("#home-page").empty();
+
+  //OMDB api
+  var movie = $(this).attr("data-name");
+  var apiKeyOmdb = "694640ef";
+  var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function (response) {
+
+    console.log(response);
+
+  })
 
   //ajax call for UTelly 
   var searchParameter = "";
@@ -33,10 +49,27 @@ $(document).on("click", '#movie-2000_2009', function () {
 
     console.log(response);
   })
-  
+
 })
 
 $(document).on("click", '#movie-2010', function () {
+
+  $("#home-page").empty();
+
+  //OMDB api
+  var movie = $(this).attr("data-name");
+  var apiKeyOmdb = "694640ef";
+  var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function (response) {
+
+    console.log(response);
+
+  })
 
   //ajax call for UTelly 
   var searchParameter = "";
