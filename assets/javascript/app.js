@@ -11,99 +11,110 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-$(document).on("click", '#movie-2000_2009', function () {
+//Global variables --> these variable must remain global
+var selectedGenre
+var randomYear
 
-  $("#home-page").empty();
+//generate a random year between 1980-2019 to be inserted into movie DB API query
+var getRandomYear = function (start, range) {
+  randomYear = Math.floor((Math.random() * range) + start);
+  while (randomYear > range) {
+  randomYear = Math.floor((Math.random() * range) + start);
 
-  //OMDB api
-  var movie = $(this).attr("data-name");
-  var apiKeyOmdb = "694640ef";
-  var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+  }
+
+  return randomYear;
+}
+
+//store the movie DB genre value as selected from dropdown in the html then feed the genre 
+//value into the search query for the movie DB API.
+function getSelectedGenre() {
+
+  selectedGenre = document.getElementById("list").value;
+
+
+}
+
+//set event listener to start function to make the API call, display poster / title / 
+//synopsis in the html
+$("#searchButton").on("click", function () {
+  getSelectedGenre();
+  getRandomYear(1980, 2019);
+
+  var apiKeyMovieDb = "api_key=9306a8db10eced7695c9114ed645c899";
+  var baseUrlMovieDb = "https://api.themoviedb.org/3/discover/movie?";
+  var searchParameterMovieDb = "&with_genre=" + selectedGenre + "&primary_release_year=" + randomYear;
+  var queryUrlMovieDb = baseUrlMovieDb + apiKeyMovieDb + searchParameterMovieDb;
+  console.log(selectedGenre);
+  console.log(randomYear);
+  console.log(queryUrlMovieDb);
 
   $.ajax({
-    url: queryURL,
+
+    url: queryUrlMovieDb,
     method: "GET"
-  }).then(function (response) {
-
-    console.log(response);
-
-  })
-
-  //ajax call for UTelly 
-  var searchParameter = "";
-  var baseUrl = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=";
-  var queryUrlUtelly = baseUrl + searchParameter;
-
-  $.ajaxSetup({
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader("X-RapidAPI-Key", "f504da3c21mshe56c513d6a9955dp1b1c63jsn4548cb484cf3");
-    },
-  });
-  $.ajax({
-
-    url: queryUrlUtelly,
-    method: "GET",
-
 
   }).then(function (response) {
 
     console.log(response);
+    var movieInfo = response.results;
+
+    var chosenMovie = Math.floor(Math.random() * movieInfo.length);
+    var poster = movieInfo[chosenMovie].poster_path;
+    var title = movieInfo[chosenMovie].original_title;
+    var synopsis = movieInfo[chosenMovie].overview;
+    console.log(poster);
+    console.log(title);
+    console.log(synopsis);
+
+    var posterUrl = "https://image.tmdb.org/t/p/original" + poster;
+    var posterPage = $("<img>");
+    posterPage.attr("src", posterUrl);
+    $("#poster").append(posterPage);
+
+    var displayTitle = $("<h1>");
+    displayTitle.text(title);
+    $("#poster").prepend(displayTitle);
+
+    var displaySynopsis = $("<p>");
+    displaySynopsis.text(synopsis);
+    $("#poster").prepend(displaySynopsis);
+
   })
 
-})
-
-$(document).on("click", '#movie-2010', function () {
-
-  $("#home-page").empty();
-
-  //OMDB api
-  var movie = $(this).attr("data-name");
-  var apiKeyOmdb = "694640ef";
-  var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+});
 
 
-  $.ajax({
-    url: queryURL,
-    method: "GET"
-  }).then(function (response) {
+//$(document).on("click", '#movie-2000_2009', function () {
 
-    console.log(response);
-
-  })
-
-  //ajax call for UTelly 
-  var searchParameter = "";
-  var baseUrl = "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=";
-  var queryUrlUtelly = baseUrl + searchParameter;
-
-  $.ajaxSetup({
-    beforeSend: function (xhr) {
-      xhr.setRequestHeader("X-RapidAPI-Key", "f504da3c21mshe56c513d6a9955dp1b1c63jsn4548cb484cf3");
-    },
-  });
-  $.ajax({
-
-    url: queryUrlUtelly,
-    method: "GET",
+  //$("#home-page").empty();
 
 
-  }).then(function (response) {
+  //make random number generator to insert as IMDB id (format tt1234567)
+  //var idRandom = "";
+  //for (var i = 0; i < 6; i++) {
 
-    console.log(response);
-  })
+    //var random = Math.floor(Math.random()* 6) +1;
+    //idRandom = random + idRandom;
+    
+  //}
+  
+  //OMDB API call works with random id generated and inserted into query url.  However, the 
+  //database is far to large, and returns extremely obscure movie titles  
 
-})
+  //var movieID = "tt0" + idRandom;
+  //var apiKeyOmdb = "&apikey=694640ef";
+  //var baseUrlOmdb = "https://www.omdbapi.com/?i=";
+  //var queryURL =  baseUrlOmdb + movieID + apiKeyOmdb;
+  //console.log(queryURL);
+  // $.ajax({
 
-//ajax call for OMDB API
-var movie = $(this).attr("data-name");
-var apiKeyOmdb = "694640ef";
-var queryURL = "https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
+  //   url: queryURL,
+  //   method: "GET"
 
+  // }).then(function (response) {
 
-$.ajax({
-  url: queryURL,
-  method: "GET"
-}).then(function (response) {
+  //   console.log(response);
 
+  // })
 
-}) 
