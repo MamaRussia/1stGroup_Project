@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-     <!-- Bootstrap CSS -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <!-- Bootstrap CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
 
-     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
 
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
@@ -17,7 +19,7 @@
 
     <!-- Compiled and minified JavaScript -->
     <!-- <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> -->
-    <script src=  "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- FireBase -->
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
 
@@ -25,159 +27,111 @@
 </head>
 
 <body>
-        <div class="row">
-                <nav>
-                    <div class="nav-wrapper #1a237e indigo darken-4">
-                        <a href="#" class="brand-logo"> Movie Tinder</a>
-                        <ul id="nav-mobile" class="left hide-on-med-and-down">
-                        </ul>
-        
-                    </div>
-                </nav>
+
+    <div class="row">
+        <nav>
+            <div class="nav-wrapper #1a237e indigo darken-4">
+                <a href="#" class="brand-logo"> Movie Tinder</a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                </ul>
+
             </div>
-            <div class="col s12 m7">
-                    <h2 class="header center">Welcome to Movie Tinder!</h2>
-                    <div class="card horizontal">
-                      <div class="card-image">
-                        <img src="assets/images/logo/Slide1.jpg">
-                      </div>
-                      <div class="card-stacked">
-                        <div class="card-content">
-                          <p> <h1> </h1>Please enter your Name and select a moive year you would like to rank
-                             between 2000-2009</p>
-                             <div class="row">
-                                    <div class="input-field col s6">
-                                      <input value="Alvin" id="first_name2" type="text" class="validate">
-                                      <label class="active" for="first_name2">First Name</label>
-                                    </div>
-                                    <div class="input-field col s12">
-                                            <select>
-                                              <option value="">Choose your option</option>
-                                              <option value="1">2000-2001</option>
-                                              <option value="2">2001-2002</option>
-                                              <option value="3">2002-2003</option>
-                                              <option value="4">2003-2004</option>
-                                              <option value="5">2004-2005</option>
-                                              <option value="6">2005-2006</option>
-                                              <option value="7">2006-2007</option>
-                                              <option value="8">2007-2008</option>
-                                              <option value="9">2008-2009</option>
-        
-                                            </select>
-                                            <label>Materialize Select</label>
-                                          </div>
-                                  </div>
-        
-            <div class="col s6">
-                <form id="name-form">
-                    <div class="input-field">
-                        <div class="card blue-grey darken-1">
-                            <div class="card-content white-text">
-                                <p class="flow-text">Enter your first name below.</p>
-                                <p class="flow-text">Then select which movie genre you love.</p>
+        </nav>
+    </div>
+    <div class="col s12 m7">
+        <h2 class="header center">Welcome to Movie Tinder!</h2>
+        <div class="card horizontal">
+            <div class="card-image">
+                <img src="assets/images/logo/Slide1.jpg">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p>
+                        <h1> </h1>Please enter your Name and select a moive genre
+                    </p>
+                    <br>
+                    <br>
+                    <br>
+                    
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input value="Enter name here" id="first_name2" type="text" class="validate">
+                            <label class="active" for="first_name2">First Name</label> 
+                        </div>
+                            <div class="col s6">
+                                <select class="browser-default">
+                                    <option value="" disabled selected>Choose your genre</option>
+                                    <option value="1">Action</option>
+                                    <option value="2">Adventure</option>
+                                    <option value="3">Animation</option>
+                                    <option value="4">Comedy</option>
+                                    <option value="5">Crime</option>
+                                    <option value="6">Documentary</option>
+                                    <option value="7">Drama</option>
+                                    <option value="8">Fantasy</option>
+                                    <option value="9">History</option>
+                                    <option value="10">Horror</option>
+                                    <option value="11">Crime</option>
+                                    <option value="12">Music</option>
+                                    <option value="13">Mystery</option>
+                                    <option value="14">Romance</option>
+                                    <option value="15">Science Fiction</option>
+                                    <option value="16">Thriller</option>
+                                </select>
                             </div>
-                        </div>
-                        
-                      </div>
-                    </div>
-                  </div>
-                          
-                </form>
-            </div>
-            <div class="col s3">
-                <p></p>
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col s4">
-                <p></p>
-            </div>
-            <div class="col s4 center">
-                <button id="movie-2000_2009" class="btn waves-effect waves-light" type="submit" name="action">
-                    2000-2009 </button>
-                <br>
-                <br>
-                
-                <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="movie-genre"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Select movie genre
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="movie-genre">
-                          <a class="dropdown-item" value="28">Action</a>
-                          <a class="dropdown-item" value="12">Adventure</a>
-                          <a class="dropdown-item" value="16">Animation</a>
-                          <a class="dropdown-item" value="35">Comedy</a>
-                          <a class="dropdown-item" value="80">Crime</a>
-                          <a class="dropdown-item" value="99">Documentary</a>
-                          <a class="dropdown-item" value="18">Drama</a>
-                          <a class="dropdown-item" value="14">Fantasy</a>
-                          <a class="dropdown-item" value="36">History</a>
-                          <a class="dropdown-item" value="27">Horror</a>
-                          <a class="dropdown-item" value="80">Crime</a>
-                          <a class="dropdown-item" value="10402">Music</a>
-                          <a class="dropdown-item" value="9648">Mystery</a>
-                          <a class="dropdown-item" value="10749">Romance</a>
-                          <a class="dropdown-item" value="878">Science Fiction</a>
-                          <a class="dropdown-item" value="53">Thriller</a>
-                        </div>
-                      </div>
-            
-               
-                
-            </div>
-            <div class="col s4">
-                <p></p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s3 m3 l4">
-                <p></p>
-            </div>
-            <div class="col s6 m6 l4">
-                <div class="input-field">
-                    <div class="card blue-grey darken-1">
-                        <div class="card-image">
-                            <img src="assets/images/filler.jpeg" id="placeholder-img">
-                            <a class="btn-floating halfway-fab #212121 grey darken-4
-                                #e3f2fd blue lighten-5">
-                                <i class="material-icons">+</i></a>
-                        </div>
-                        <div class="card-content">
-                            <p class="rating">Rating: R CAN HAVE JQUERY ADD THIS DYNAMICALLY</p>
-                            <p class="actors">Starring: CAN HAVE JQUERY ADD THIS DYNAMICALLY</p>
-                            <p class="plot">Plot: CAN HAVE JQUERY ADD THIS DYNAMICALLY</p>
-                            <p class="view-here">JQUERY WILL ADD THIS DYNAMICALLY</p>
-                        </div>
+                       
                     </div>
                 </div>
-            </div>
-            <div class="col s3 m3 l4">
-                <p></p>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s3 m4 l4">
-                <p></p>
-            </div>
-            <div class="col s6 m4 l4">
-                <div class="desc-area">
-                    <p class="rating">Rating: R CAN HAVE JQUERY ADD THIS DYNAMICALLY</p>
-                    <p class="actors">Starring: CAN HAVE JQUERY ADD THIS DYNAMICALLY</p>
-                    <p class="plot">Plot: CAN HAVE JQUERY ADD THIS DYNAMICALLY</p>
-                    <p class="view-here">JQUERY WILL ADD THIS DYNAMICALLY</p>
-                </div>
-            </div>
-            <div class="col s3 m4 l4">
-                <p></p>
             </div>
         </div>
     </div>
+    </div>
+    <div class="row">
+        <div class="col s3 m3 l4">
+            <p></p>
+        </div>
+        <div class="col s6 m6 l4">
+            <div class="input-field">
+                <div class="card blue-grey darken-1">
+                    <div class="card-image">
+                        <img src="assets/images/filler.jpeg" id="placeholder-img">
+                        <a class="btn-floating halfway-fab #212121 grey darken-4
+                                #e3f2fd blue lighten-5">
+                            <i class="material-icons">+</i></a>
+                    </div>
+                    <div class="card-content">
+                        <p class="rating">Rating: R CAN HAVE JQUERY ADD THIS DYNAMICALLY</p>
+                        <p class="actors">Starring: CAN HAVE JQUERY ADD THIS DYNAMICALLY</p>
+                        <p class="plot">Plot: CAN HAVE JQUERY ADD THIS DYNAMICALLY</p>
+                        <p class="view-here">JQUERY WILL ADD THIS DYNAMICALLY</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s3 m3 l4">
+            <p></p>
+        </div>
+    </div>
 
-  
+    <div class="row">
+        <div class="col s3 m4 l4">
+            <p></p>
+        </div>
+        <div class="col s6 m4 l4">
+            <div class="desc-area">
+                <p class="rating">Rating: R CAN HAVE JQUERY ADD THIS DYNAMICALLY</p>
+                <p class="actors">Starring: CAN HAVE JQUERY ADD THIS DYNAMICALLY</p>
+                <p class="plot">Plot: CAN HAVE JQUERY ADD THIS DYNAMICALLY</p>
+                <p class="view-here">JQUERY WILL ADD THIS DYNAMICALLY</p>
+            </div>
+        </div>
+        <div class="col s3 m4 l4">
+            <p></p>
+        </div>
+    </div>
+    </div>
+
+
 
 
     <script src="assets/javascript/app.js"></script>
