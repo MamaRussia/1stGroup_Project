@@ -3,16 +3,31 @@
     width: 100%;
 }
 
-#logo{
+/* #logo{
     width: 20%;
     height: auto;
-}
+} */
 
 
 /* css code for plaground html (jr.html) */
 #moviePoster {
-    height: 500px;
-    width: 300px;
+    width: 90vw;
+    max-width:500px;
 
 }
 
+nav {
+background-color: lightskyblue;
+color: white;
+
+}
+
+.card {
+    background-color: lightskyblue;
+    color: white;
+    margin-top: 30px;
+    
+    }
+
+  
+    

@@ -48,8 +48,10 @@
   //synopsis in the html
 
     $("#searchButton").on("click", function () {
+    
       getSelectedGenre();
       getRandomYear(1980, 2019);
+      $("#name-input").val("");
   
       var apiKeyMovieDb = "api_key=9306a8db10eced7695c9114ed645c899";
       var baseUrlMovieDb = "https://api.themoviedb.org/3/discover/movie?";
@@ -77,6 +79,7 @@
         console.log(poster);
         console.log(title);
         console.log(synopsis);
+      
   
         var posterUrl = "https://image.tmdb.org/t/p/original" + poster;
         var posterPage = $("<img>");
