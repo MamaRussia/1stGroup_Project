@@ -5,12 +5,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+     <!-- Bootstrap CSS -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
     <link rel="stylesheet" type="text/css" href="../1stGroup_Project/assets/css/style.css">
 
     <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script> -->
+    <script src=  "https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!-- FireBase -->
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
 
@@ -41,7 +48,7 @@
                         <div class="card blue-grey darken-1">
                             <div class="card-content white-text">
                                 <p class="flow-text">Enter your first name below.</p>
-                                <p class="flow-text">Then select which movie year you love the most.</p>
+                                <p class="flow-text">Then select which movie genre you love.</p>
                             </div>
                         </div>
                         <input placeholder="Enter your name with no special characters or numbers" id="first_name"
@@ -65,13 +72,29 @@
                 <br>
                 <br>
                 
-                <select>
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="1">Option 1</option>
-                    <option value="2">Option 2</option>
-                    <option value="3">Option 3</option>
-                </select>
-                <label>Materialize Select</label>
+                <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="movie-genre"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Select movie genre
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="movie-genre">
+                          <a class="dropdown-item" value="28">Action</a>
+                          <a class="dropdown-item" value="12">Adventure</a>
+                          <a class="dropdown-item" value="16">Animation</a>
+                          <a class="dropdown-item" value="35">Comedy</a>
+                          <a class="dropdown-item" value="80">Crime</a>
+                          <a class="dropdown-item" value="99">Documentary</a>
+                          <a class="dropdown-item" value="18">Drama</a>
+                          <a class="dropdown-item" value="14">Fantasy</a>
+                          <a class="dropdown-item" value="36">History</a>
+                          <a class="dropdown-item" value="27">Horror</a>
+                          <a class="dropdown-item" value="80">Crime</a>
+                          <a class="dropdown-item" value="10402">Music</a>
+                          <a class="dropdown-item" value="9648">Mystery</a>
+                          <a class="dropdown-item" value="10749">Romance</a>
+                          <a class="dropdown-item" value="878">Science Fiction</a>
+                          <a class="dropdown-item" value="53">Thriller</a>
+                        </div>
+                      </div>
             
                
                 
@@ -126,9 +149,9 @@
         </div>
     </div>
 
-   
+  
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <script src="assets/javascript/app.js"></script>
 </body>
 
