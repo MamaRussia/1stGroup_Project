@@ -43,14 +43,24 @@
   
   
   }
+
+  $("#loveBtn").hide();
+  $("#hateBtn").hide();
   
   //set event listener to start function to make the API call, display poster / title / 
   //synopsis in the html
 
     $("#searchButton").on("click", function () {
+
+      $("#header").hide();
+      $("#list").hide();
+      $("#searchButton").hide();
+      $("#name-input").hide();
+      $("#loveBtn").show();
+      $("#hateBtn").show();
     
       getSelectedGenre();
-      getRandomYear(1980, 2019);
+      getRandomYear(2015, 2019);
       $("#name-input").val("");
   
       var apiKeyMovieDb = "api_key=9306a8db10eced7695c9114ed645c899";
@@ -85,17 +95,17 @@
         var posterPage = $("<img>");
         posterPage.attr("src", posterUrl);
         posterPage.attr("id", "moviePoster");
-        $("#poster").append(posterPage);
+        $("#poster").prepend(posterPage);
   
         var displayTitle = $("<h1>");
         displayTitle.text(title);
-        $("#poster").prepend(displayTitle);
+        $("#poster").append(displayTitle);
   
         var displaySynopsis = $("<p>");
         displaySynopsis.text(synopsis);
-        $("#poster").prepend(displaySynopsis);
+        $("#poster").append(displaySynopsis);
 
-        $("#likeButton").on("click", function() {
+        $("#loveBtn").on("click", function() {
 
             if (chosenMovie) {
 
@@ -108,21 +118,24 @@
                 //var posterPage = $("<img>");
                 posterPage.attr("src", posterUrl);
                 posterPage.attr("id", "moviePoster");
-                $("#poster").append(posterPage);
+                $("#poster").prepend(posterPage);
         
                 //var displayTitle = $("<h1>");
                 displayTitle.text(title);
-                $("#poster").prepend(displayTitle);
+                $("#poster").append(displayTitle);
         
                 //var displaySynopsis = $("<p>");
                 displaySynopsis.text(synopsis);
-                $("#poster").prepend(displaySynopsis);
+                $("#poster").append(displaySynopsis);
             }
 
         })
+
+
     
   
       })
+      
   
     });
   

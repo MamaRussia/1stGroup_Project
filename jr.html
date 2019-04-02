@@ -32,7 +32,7 @@
             <p></p>
         </div>
         <div class="col s6 m6 l6">
-            <div class="card" style="width: 22rem;">
+            <div id="header" class="card" style="width: 22rem;">
                     <img class="card-img-top" src="assets/images/logo/Slide1.jpg">
                 <div class="card-body">
                     <h4 class="card-title">Enter your name.</h4>
@@ -41,9 +41,10 @@
                 </div>
             </div>
             <br><br>
-            <div class="form-group">
+            <div id="header" class="form-group">
                     <input type="name" class="form-control" id="name-input" placeholder="Jennifer Lopez">
                   </div>
+                  <div class="col center">
             <select id="list" onchange="getSelectedGenre();">
                 <option value="">Select movie genre</option>
                 <option value="28">Action</option>
@@ -64,16 +65,19 @@
                 <option value="53">Thriller</option>
             </select>
             <button type="submit" id="searchButton">Search</button>
+        </div>
             <div id="poster">
             </div>
+            <div class="col text-center">
+            <button id="loveBtn">Love It?</button>
+            <button id="hateBtn">Hate It?</button>
+        </div>
         </div>
         <div class="col s3 m3 l4">
             <p></p>
         </div>
     </div>
 
-    <button id="likeButton">Like</button>
-    <button id="dislikeButton">Dislike</button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>

@@ -1,7 +1,7 @@
-#placeholder-img {
+/* #placeholder-img {
     height: 425px;
     width: 100%;
-}
+} */
 
 /* #logo{
     width: 20%;
@@ -25,9 +25,21 @@ color: white;
 .card {
     background-color: lightskyblue;
     color: white;
-    margin-top: 30px;
+    margin-top: 10px;
     
     }
 
-  
+ #loveBtn, #hateBtn {
+margin-left: 45px;
+margin-right: 45px;
+margin-top: 45px;
+  }
+
+  #searchButton {
+      margin-left:10px;
+  }
+
+  #name-input {
+      width:85%;
+  }
     
