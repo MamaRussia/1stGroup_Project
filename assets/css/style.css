@@ -1,18 +1,54 @@
-#placeholder-img {
+/* #placeholder-img {
     height: 425px;
     width: 100%;
-}
+} */
 
-#logo{
+/* #logo{
     width: 20%;
     height: auto;
-}
+} */
 
 
 /* css code for plaground html (jr.html) */
 #moviePoster {
-    height: 500px;
-    width: 300px;
+    width: 90vw;
+    max-width:500px;
 
 }
 
+nav {
+background-color: lightskyblue;
+color: white;
+
+}
+
+.card {
+    background-color: lightskyblue;
+    color: white;
+    margin-top: 10px;
+    border: 2px solid black;
+    
+    }
+
+ #loveBtn, #hateBtn {
+margin-left: 45px;
+margin-right: 5px;
+margin-top: 45px;
+border: 2px solid black;
+  }
+
+  #searchButton {
+      margin-left:10px;
+      border: 1px solid black;
+  }
+
+  #name-input {
+    border: 2px solid black;
+    text-align:center;
+      width:55%;
+  }
+
+  #list {
+    border: 2px solid black;
+  }
+    
