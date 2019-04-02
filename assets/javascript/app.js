@@ -11,6 +11,8 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
+
+
 //Global variables --> these variable must remain global
 var selectedGenre
 var randomYear
