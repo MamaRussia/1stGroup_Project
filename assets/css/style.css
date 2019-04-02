@@ -26,20 +26,29 @@ color: white;
     background-color: lightskyblue;
     color: white;
     margin-top: 10px;
+    border: 2px solid black;
     
     }
 
  #loveBtn, #hateBtn {
 margin-left: 45px;
-margin-right: 45px;
+margin-right: 5px;
 margin-top: 45px;
+border: 2px solid black;
   }
 
   #searchButton {
       margin-left:10px;
+      border: 1px solid black;
   }
 
   #name-input {
+    border: 2px solid black;
+    text-align:center;
       width:55%;
+  }
+
+  #list {
+    border: 2px solid black;
   }
     
