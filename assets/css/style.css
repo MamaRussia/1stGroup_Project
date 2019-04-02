@@ -7,3 +7,11 @@
     width: 20%;
     height: auto;
 }
+
+
+/* css code for plaground html (jr.html) */
+#moviePoster {
+    height: 500px;
+    width: 300px;
+
+}
