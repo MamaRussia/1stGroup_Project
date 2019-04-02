@@ -1,40 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
 </head>
+
 <body>
-    <select id="list" onchange="getSelectedGenre();">
-        <option value="">Select movie genre</option>
-        <option value="28">Action</option>
-        <option value="12">Adventure</option>
-        <option value="16">Animation</option>
-        <option value="35">Comedy</option>
-        <option value="80">Crime</option>
-        <option value="99">Documentary</option>
-        <option value="18">Drama</option>
-        <option value="14">Fantasy</option>
-        <option value="36">History</option>
-        <option value="27">Horror</option>
-        <option value="80">Crime</option>
-        <option value="10402">Music</option>
-        <option value="9648">Mystery</option>
-        <option value="10749">Romance</option>
-        <option value="878">Science Fiction</option>
-        <option value="53">Thriller</option>
-    </select>
-    <button id="searchButton">Search</button>
-    <div id="poster">   
+    <ul class="nav justify-content-center">
+            <h1 class="card-title">Movie Tinder</h1>
+    </ul>
+
+    <div class="row">
+        <div class="col s3 m3 l6">
+            <p></p>
+        </div>
+        <div class="col s6 m6 l6">
+            <div class="card" style="width: 20rem;">
+                    <img class="card-img-top" src="assets/images/logo/Slide1.jpg">
+                <div class="card-body">
+                    <h5 class="card-title">Enter your name.</h5>
+                    <h5 class="card-title">Select the genre.</h5>
+                    <h5 class="card-title">Start liking.</h5>
+                </div>
+            </div>
+            <br><br>
+            <div class="form-group">
+                    <input type="name" class="form-control" id="name-input" placeholder="Jennifer Lopez">
+                  </div>
+            <select id="list" onchange="getSelectedGenre();">
+                <option value="">Select movie genre</option>
+                <option value="28">Action</option>
+                <option value="12">Adventure</option>
+                <option value="16">Animation</option>
+                <option value="35">Comedy</option>
+                <option value="80">Crime</option>
+                <option value="99">Documentary</option>
+                <option value="18">Drama</option>
+                <option value="14">Fantasy</option>
+                <option value="36">History</option>
+                <option value="27">Horror</option>
+                <option value="80">Crime</option>
+                <option value="10402">Music</option>
+                <option value="9648">Mystery</option>
+                <option value="10749">Romance</option>
+                <option value="878">Science Fiction</option>
+                <option value="53">Thriller</option>
+            </select>
+            <button type="submit" id="searchButton">Search</button>
+            <div id="poster">
+            </div>
+        </div>
+        <div class="col s3 m3 l4">
+            <p></p>
+        </div>
     </div>
+
     <button id="likeButton">Like</button>
     <button id="dislikeButton">Dislike</button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
 </body>
+
 </html>
