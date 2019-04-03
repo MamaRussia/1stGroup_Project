@@ -179,13 +179,13 @@ $("#searchButton").on("click", function () {
 
 
     })
-  })
+
 
   $("#hateBtn").on("click", function () {
 
-    if (chosenMovie) {
+    if (chosenMovie <= 20) {
 
-      chosenMovie = Math.floor(Math.random() * movieInfo.length);
+      chosenMovie++;
       poster = movieInfo[chosenMovie].poster_path;
       title = movieInfo[chosenMovie].original_title;
       synopsis = movieInfo[chosenMovie].overview;
@@ -208,6 +208,8 @@ $("#searchButton").on("click", function () {
 
     }
   })
+
+})
 
 
 
