@@ -12,7 +12,6 @@
 //   var database = firebase.database();
 
 
-
 //Global variables --> these variable must remain global
 var selectedGenre;
 var randomYear;
@@ -29,7 +28,6 @@ var getRandomYear = function (start, range) {
   randomYear = Math.floor((Math.random() * range) + start);
   while (randomYear > range) {
     randomYear = Math.floor((Math.random() * range) + start);
-
   }
 
   return randomYear;
@@ -40,8 +38,6 @@ var getRandomYear = function (start, range) {
 function getSelectedGenre() {
 
   selectedGenre = document.getElementById("list").value;
-
-
 }
 
 $("#myModal").hide();
@@ -80,7 +76,6 @@ $("#searchButton").on("click", function () {
     console.log(response);
     var movieInfo = response.results;
 
-
     chosenMovie = 0;
     poster = movieInfo[chosenMovie].poster_path;
     title = movieInfo[chosenMovie].original_title;
@@ -104,22 +99,19 @@ $("#searchButton").on("click", function () {
     displaySynopsis.text(synopsis);
     $("#poster").append(displaySynopsis);
 
-    //<button id="loveBtn">Love It?</button>
-    //<button id="hateBtn">Hate It?</button>
+    //variable array for buttons
     var loveHate = ["Love it", "Hate it"];
-
+    //loop through array
     for (var i = 0; i < loveHate.length; i++) {
-
+      //create buttons with classes, and append to id preferenceBtns
       var loveHateBtn = $("<button>");
       loveHateBtn.addClass("loveBtn hateBtn preference");
       loveHateBtn.attr("data-preference", loveHate[i]);
-
       loveHateBtn.text(loveHate[i]);
-
       $("#preferenceBtns").append(loveHateBtn);
     }
 
-
+    // on click for like and dislike button
     $(".preference").on("click", function () {
 
       if (chosenMovie <= 18) {
@@ -144,29 +136,23 @@ $("#searchButton").on("click", function () {
         $("#poster").append(displaySynopsis);
 
       } else {
+        //removes jQuery conflict to allow this code to work
+        //while linking more than 1 jQuery library
+        // got to love stack overflow
         jQuery.noConflict();
         $("#myModal").modal("show");
-
-
 
         /*var modalP = $("<p>");
         var modalYesBtn = ("<button>");
         var modalNoBtn = ("<button>");
-
         modalP.attr("id", "modalShow");
         modalYesBtn.attr("id", "modalYesBtn");
         modalNoBtn.attr("id", "modalNoBtn");
-        
         $("#modalShow").text("Would you like to change genres?");
         $("#modalYesBtn").text("Yes");
         $("#modalNoBtn").text("No");*/
-
-
       }
-
-
     })
-
   })
 })
 
