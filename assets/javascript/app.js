@@ -1,17 +1,3 @@
-// Initialize Firebase
-// var config = {
-//     apiKey: "AIzaSyAxECsjpvYp3f73lOo41_dj4TfNIhlczU8",
-//     authDomain: "movie-tinder-69319.firebaseapp.com",
-//     databaseURL: "https://movie-tinder-69319.firebaseio.com",
-//     projectId: "movie-tinder-69319",
-//     storageBucket: "movie-tinder-69319.appspot.com",
-//     messagingSenderId: "689316741981"
-//   };
-//   firebase.initializeApp(config);
-
-//   var database = firebase.database();
-
-
 //Global variables --> these variable must remain global
 var selectedGenre;
 var randomYear;
@@ -45,7 +31,6 @@ $(".preference").hide();
 
 //set event listener to start function to make the API call, display poster / title / 
 //synopsis in the html
-
 $("#searchButton").on("click", function () {
 
   $("#header").hide();
@@ -116,6 +101,15 @@ $("#searchButton").on("click", function () {
 
       if (chosenMovie <= 18) {
 
+        //gets the data attribute for the buttons
+        function toTable(preference) {
+          var buttonType = preference.getAttribute("data-preference");
+          console.log(buttonType)
+        }
+
+        //
+        $("#tableInfo").append(toTable(this));
+
         chosenMovie++;
         poster = movieInfo[chosenMovie].poster_path;
         title = movieInfo[chosenMovie].original_title;
@@ -152,7 +146,13 @@ $("#searchButton").on("click", function () {
         $("#modalYesBtn").text("Yes");
         $("#modalNoBtn").text("No");*/
       }
+
+      //
+      
     })
+
+    
+    
   })
 })
 
