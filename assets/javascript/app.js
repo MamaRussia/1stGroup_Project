@@ -44,7 +44,7 @@ function getSelectedGenre() {
 
 }
 
-$("#modal1").hide();
+$("#myModal").hide();
 $(".preference").hide();
 
 //set event listener to start function to make the API call, display poster / title / 
@@ -110,15 +110,13 @@ $("#searchButton").on("click", function () {
 
     for (var i = 0; i < loveHate.length; i++) {
 
-    var loveHateBtn = $("<button>");
+      var loveHateBtn = $("<button>");
+      loveHateBtn.addClass("loveBtn hateBtn preference");
+      loveHateBtn.attr("data-preference", loveHate[i]);
 
-    loveHateBtn.addClass("loveBtn hateBtn preference");
+      loveHateBtn.text(loveHate[i]);
 
-    loveHateBtn.attr("data-preference", loveHate[i]);
-
-    loveHateBtn.text(loveHate[i]);
-
-    $("#preferenceBtns").append(loveHateBtn);
+      $("#preferenceBtns").append(loveHateBtn);
     }
 
 
@@ -146,10 +144,29 @@ $("#searchButton").on("click", function () {
         $("#poster").append(displaySynopsis);
 
       } else {
-        $("#modal1").show();
+        jQuery.noConflict();
+        $("#myModal").modal("show");
+
+
+
+        /*var modalP = $("<p>");
+        var modalYesBtn = ("<button>");
+        var modalNoBtn = ("<button>");
+
+        modalP.attr("id", "modalShow");
+        modalYesBtn.attr("id", "modalYesBtn");
+        modalNoBtn.attr("id", "modalNoBtn");
+        
+        $("#modalShow").text("Would you like to change genres?");
+        $("#modalYesBtn").text("Yes");
+        $("#modalNoBtn").text("No");*/
+
+
       }
+
+
     })
+
   })
 })
 
-  
