@@ -65,7 +65,7 @@ $("#searchButton").on("click", function () {
 
   var apiKeyMovieDb = "api_key=9306a8db10eced7695c9114ed645c899";
   var baseUrlMovieDb = "https://api.themoviedb.org/3/discover/movie?";
-  var searchParameterMovieDb = "&with_genre=" + selectedGenre + "&primary_release_year=" + randomYear;
+  var searchParameterMovieDb = "&with_genres=" + selectedGenre + "&primary_release_year=" + randomYear;
   var queryUrlMovieDb = baseUrlMovieDb + apiKeyMovieDb + searchParameterMovieDb;
   console.log(selectedGenre);
   console.log(randomYear);
@@ -82,7 +82,7 @@ $("#searchButton").on("click", function () {
     var movieInfo = response.results;
 
 
-    chosenMovie = Math.floor(Math.random() * movieInfo.length);
+    chosenMovie = 0;
     poster = movieInfo[chosenMovie].poster_path;
     title = movieInfo[chosenMovie].original_title;
     synopsis = movieInfo[chosenMovie].overview;
@@ -107,9 +107,9 @@ $("#searchButton").on("click", function () {
 
     $("#loveBtn").on("click", function () {
 
-      if (chosenMovie) {
+      if (chosenMovie <= 20) {
 
-        chosenMovie = Math.floor(Math.random() * movieInfo.length);
+        chosenMovie++;
         poster = movieInfo[chosenMovie].poster_path;
         title = movieInfo[chosenMovie].original_title;
         synopsis = movieInfo[chosenMovie].overview;
