@@ -28,6 +28,8 @@ function getSelectedGenre() {
 
 $("#myModal").hide();
 $(".preference").hide();
+$("#utellyBtn").hide();
+
 
 //set event listener to start function to make the API call, display poster / title / 
 //synopsis in the html
@@ -38,6 +40,7 @@ $("#searchButton").on("click", function () {
   $("#searchButton").hide();
   $("#name-input").hide();
   $(".preference").show();
+  $("#utellyBtn").show();
 
   getSelectedGenre();
   getRandomYear(2015, 2019);
