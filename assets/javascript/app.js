@@ -44,8 +44,8 @@ function getSelectedGenre() {
 
 }
 
-$("#loveBtn").hide();
-$("#hateBtn").hide();
+$("#modal1").hide();
+$(".preference").hide();
 
 //set event listener to start function to make the API call, display poster / title / 
 //synopsis in the html
@@ -56,8 +56,7 @@ $("#searchButton").on("click", function () {
   $("#list").hide();
   $("#searchButton").hide();
   $("#name-input").hide();
-  $("#loveBtn").show();
-  $("#hateBtn").show();
+  $(".preference").show();
 
   getSelectedGenre();
   getRandomYear(2015, 2019);
@@ -105,15 +104,32 @@ $("#searchButton").on("click", function () {
     displaySynopsis.text(synopsis);
     $("#poster").append(displaySynopsis);
 
-    $("#loveBtn").on("click", function () {
+    //<button id="loveBtn">Love It?</button>
+    //<button id="hateBtn">Hate It?</button>
+    var loveHate = ["Love it", "Hate it"];
 
-      if (chosenMovie <= 20) {
+    for (var i = 0; i < loveHate.length; i++) {
+
+    var loveHateBtn = $("<button>");
+
+    loveHateBtn.addClass("loveBtn hateBtn preference");
+
+    loveHateBtn.attr("data-preference", loveHate[i]);
+
+    loveHateBtn.text(loveHate[i]);
+
+    $("#preferenceBtns").append(loveHateBtn);
+    }
+
+
+    $(".preference").on("click", function () {
+
+      if (chosenMovie <= 18) {
 
         chosenMovie++;
         poster = movieInfo[chosenMovie].poster_path;
         title = movieInfo[chosenMovie].original_title;
         synopsis = movieInfo[chosenMovie].overview;
-
 
         var posterUrl = "https://image.tmdb.org/t/p/original" + poster;
         //var posterPage = $("<img>");
@@ -129,121 +145,11 @@ $("#searchButton").on("click", function () {
         displaySynopsis.text(synopsis);
         $("#poster").append(displaySynopsis);
 
-        /*var movieObj = {
-          chosenMovie: Math.floor(Math.random() * movieInfo.length),
-          poster: movieInfo[chosenMovie].poster_path,
-          title: movieInfo[chosenMovie].original_title,
-          synopsis: movieInfo[chosenMovie].overview,
-          posterUrl: "https://image.tmdb.org/t/p/original" + movieObj.poster,
-          posterPage: $("<img>"),
-          src: movieObj.posterPage.attr("src", posterUrl),
-          id: movieObj.posterPage.attr("id", "moviePoster"),
-          write: $("#poster").prepend(movieObj.posterPage),
-          displayTitle: $("<h1>"),
-          titleText: movieObj.displayTitle.text(title),
-          posterTitle: $("#poster").append(movieObj.displayTitle),
-          displaySynopsis: $("<p>"),
-          synopsisText: movieObj.displaySynopsis.text(synopsis),
-          synopsisDisplayText: $("#poster").append(movieObj.displaySynopsis)
-        }*/
-
-        //var moviesChosen = [];
-        //moviesChosen.push(movieObj);
-
-        //console.log(moviesChosen);
-
-        /*for (i = 0; i < moviesChosen.length; i++) {
-          if (moviesChosen[i] === true) {
-            var movieObj = {
-              chosenMovie: Math.floor(Math.random() * movieInfo.length),
-              poster: movieInfo[chosenMovie].poster_path,
-              title: movieInfo[chosenMovie].original_title,
-              synopsis: movieInfo[chosenMovie].overview
-            }
-
-            var moviesChosen = [];
-            moviesChosen.push(movieObj);
-
-            console.log(moviesChosen);
-            console.log(chosenMovie);
-          };*/
-
-
+      } else {
+        $("#modal1").show();
       }
-
-      //while (moviesChosen.indexOf(index) != -1) {
-      //index = Math.floor(Math.random()) * moviesChosen.length;
-
-
-
-
-
     })
-
-
-  $("#hateBtn").on("click", function () {
-
-    if (chosenMovie <= 20) {
-
-      chosenMovie++;
-      poster = movieInfo[chosenMovie].poster_path;
-      title = movieInfo[chosenMovie].original_title;
-      synopsis = movieInfo[chosenMovie].overview;
-
-      var posterUrl = "https://image.tmdb.org/t/p/original" + poster;
-      //var posterPage = $("<img>");
-      posterPage.attr("src", posterUrl);
-      posterPage.attr("id", "moviePoster");
-      $("#poster").prepend(posterPage);
-
-      //var displayTitle = $("<h1>");
-      displayTitle.text(title);
-      $("#poster").append(displayTitle);
-
-      //var displaySynopsis = $("<p>");
-      displaySynopsis.text(synopsis);
-      $("#poster").append(displaySynopsis);
-
-
-
-    }
   })
-
 })
 
-
-
-  /*$(document).on("click", '#movie-2000_2009', function () {
- 
-    //$("#home-page").empty();
- 
- 
-    //make random number generator to insert as IMDB id (format tt1234567)
-    //var idRandom = "";
-    //for (var i = 0; i < 6; i++) {
- 
-      //var random = Math.floor(Math.random()* 6) +1;
-      //idRandom = random + idRandom;
- 
-    //}
- 
-    //OMDB API call works with random id generated and inserted into query url.  However, the 
-    //database is far to large, and returns extremely obscure movie titles  
- 
-    //var movieID = "tt0" + idRandom;
-    //var apiKeyOmdb = "&apikey=694640ef";
-    //var baseUrlOmdb = "https://www.omdbapi.com/?i=";
-    //var queryURL =  baseUrlOmdb + movieID + apiKeyOmdb;
-    //console.log(queryURL);
-    // $.ajax({
- 
-    //   url: queryURL,
-    //   method: "GET"
- 
-    // }).then(function (response) {
- 
-    //   console.log(response);
- 
-    // })*/
-
-});
+  
