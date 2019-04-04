@@ -38,7 +38,7 @@
         <div class="container">
 
             <div class="row">
-                <div class="col s6 m6 l4 center">
+                <div class="col s5 m5 l3 center">
                     <div id="header" class="card" style="width: 22rem;">
                         <img class="card-img-top" src="assets/images/logo/Slide1.jpg">
                         <div class="card-body">
@@ -76,25 +76,32 @@
                     <br><br>
                     <div id="poster">
                     </div>
+                    <div>
+                        <button type="button" class="btn btn-primary" id="utellyBtn">Description/utelly button</button>
+                    </div>
+                    <br><br>
                     <div id="preferenceBtns">
                     </div>
+                    <br><br>
                 </div>
-                <div class="col s6 m6 l8">
-                    <table class="table table-striped">
+                <div class="col s7 m7 l9">
+                    <table class="table table-striped" id="tableInfo">
                         <thead class="thead-dark">
                             <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">First</th>
-                                <th scope="col">Last</th>
-                                <th scope="col">Handle</th>
+                                <th scope="col">Your Name</th>
+                                <th scope="col">Movie Name</th>
+                                <th scope="col">Poster</th>
+                                <th scope="col">Preference</th>
+                                <th scope="col">Streaming Info</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <th scope="row">1</th>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
+                                <th scope="row">Mark</th>
+                                <td>Bambi</td>
+                                <td>.....</td>
+                                <td>Like/Dislike</td>
+                                <td>Netflix, Amazon Prime, etc.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -106,13 +113,23 @@
                     <p></p>
                 </div>
                 <div class="col s6 m6 l6">
-                    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog"
-                        aria-labelledby="mySmallModalLabel" id="myModal" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
+                    <div class="modal" tabindex="-1" role="dialog" id="myModal">
+                        <div class="modal-dialog" role="document">
                             <div class="modal-content">
-                                <p>Would you like to change Genres?</p>
-                                <button id="yesBtn">Yes</button>
-                                <button id="noBtn">No</button>
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Would you like to change Genres?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                                        id="yesBtn">Yes</button>
+                                    <button type="button" class="btn btn-primary" id="noBtn">No</button>
+                                </div>
                             </div>
                         </div>
                     </div>
