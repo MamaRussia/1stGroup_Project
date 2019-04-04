@@ -30,7 +30,6 @@ $("#myModal").hide();
 $(".preference").hide();
 $("#utellyBtn").hide();
 
-
 //set event listener to start function to make the API call, display poster / title / 
 //synopsis in the html
 $("#searchButton").on("click", function () {
@@ -138,24 +137,15 @@ $("#searchButton").on("click", function () {
         // got to love stack overflow
         jQuery.noConflict();
         $("#myModal").modal("show");
-
-        /*var modalP = $("<p>");
-        var modalYesBtn = ("<button>");
-        var modalNoBtn = ("<button>");
-        modalP.attr("id", "modalShow");
-        modalYesBtn.attr("id", "modalYesBtn");
-        modalNoBtn.attr("id", "modalNoBtn");
-        $("#modalShow").text("Would you like to change genres?");
-        $("#modalYesBtn").text("Yes");
-        $("#modalNoBtn").text("No");*/
       }
-
-      //
-      
     })
 
-    
-    
+    $("#yesBtn").on("click", function () {
+      window.location.reload()
+    })
+    //$("#noBtn").on("click", function (){
+
+   // })
   })
 })
 
