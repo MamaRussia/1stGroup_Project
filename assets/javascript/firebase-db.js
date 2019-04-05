@@ -1,4 +1,4 @@
-// Initialize Firebase
+/* Initialize Firebase
 var config = {
     apiKey: "AIzaSyA63idtRZz_KQIOY5BguDw2pyDaqCdcM7U",
     authDomain: "movie-tinder-database.firebaseapp.com",
