@@ -260,17 +260,28 @@ function openTrailerWindow() {
   }).then(function (response) {
     console.log(response);
 
-    var youtubeData = response.items;
+    if (response.items.length === 0) {
+      
+      $("#myModal").modal("show");
 
-    var videoID = youtubeData[0].id.videoId;
-    var videoURL = "https://www.youtube.com/embed/" + videoID;
+    }
+    else {
+      var youtubeData = response.items;
 
-    var outputVideo = $('<iframe height="300" width="500">');
-    outputVideo.attr("src", videoURL);
-    outputVideo.attr("id", "videoWindow");
-    $("#results").append(outputVideo);
+      var videoID = youtubeData[0].id.videoId;
+      var videoURL = "https://www.youtube.com/embed/" + videoID;
+  
+      var outputVideo = $('<iframe height="300" width="500">');
+      outputVideo.attr("src", videoURL);
+      outputVideo.attr("id", "videoWindow");
+      $("#results").append(outputVideo);
+  
+      window.open(videoURL, "_blank", "height=300", "width=500");
+    }
 
-    window.open(videoURL, "_blank", "height=300", "width=500");
+   
+
+    
 
 
   });
