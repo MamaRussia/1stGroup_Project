@@ -23,6 +23,7 @@ var page = 1;
 var totalPages = 0;
 var movies = [];
 var pageResults;
+//var streamArray;[];
 //var utellyResponse;
 function getMovies() {
 
@@ -57,6 +58,10 @@ function getMovies() {
 }
 
 
+
+
+
+
 function renderMovieData(poster, title, synopsis) {
   $("#poster").empty();
 
@@ -78,6 +83,7 @@ function renderMovieData(poster, title, synopsis) {
   displaySynopsis.text(synopsis);
   $("#poster").append(displaySynopsis);
 }
+
 //generate a random year between 1980-2019 to be inserted into movie DB API query
 var getRandomYear = function (start, range) {
   randomYear = Math.floor((Math.random() * range) + start);
@@ -142,39 +148,59 @@ $(document).on("click", ".preference", function () {
   var preferenceType = this.getAttribute("data-preference");
 
   if (preferenceType === "Love it") {
-
-    /*$.ajaxSetup({
+    $.ajaxSetup({
       beforeSend: function (xhr) {
         xhr.setRequestHeader("X-RapidAPI-Key", "f504da3c21mshe56c513d6a9955dp1b1c63jsn4548cb484cf3");
       },
     });
     $.ajax({
-      url: "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + title + "&country=us",
+      url: "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + "Bojack" + "&country=us",
       method: "GET",
     }).then(function (response) {
+      var streamArray = [];
+      console.log(response);
 
-      console.log(response);*/
-    //var utellyResponse = response;
-    //var streamArray = [];
-    var userName = $("#name-input").val().trim();
+      var utellyResponse = response.results;
+      console.log(utellyResponse);
 
-    database.ref().push({
-      yourName: userName,
-      movieName: movieName,
-      preference: preferenceType,
-      //utelly: streamArray.join()
-    });
+      if (utellyResponse) {
+        for (i = 0; i < utellyResponse.length; i++) {
+          var locations = utellyResponse[i].locations;
+          if (locations) {
+            for (j = 0; j < locations.length; j++) {
+              if (locations[j].display_name) {
+                if (!streamArray.includes(locations[j].display_name)) {
+                  streamArray.push(locations[j].display_name);
+                }
+              }
+            }
+          }
+        }
+      }
+      var userName = $("#name-input").val().trim();
+
+      database.ref().push({
+        yourName: userName,
+        movieName: movieName,
+        preference: preferenceType,
+        utelly: streamArray.join()
+      });
+
+    })
+
+
   }
 
   if (chosenMovie == movies.length - 1) {
     if (page < totalPages) {
       page++;
+      chosenMovie = 0;
       getMovies();
       console.log("Chosen movie " + chosenMovie);
       console.log("")
     } else {
-        jQuery.noConflict();
-        $("#myModal").modal("show");
+      jQuery.noConflict();
+      $("#myModal").modal("show");
       //  no more movies for this genre message
     }
   } else {
@@ -193,12 +219,12 @@ database.ref().on("child_added", function (childSnapshot) {
   var userName = cs.yourName;
   var movieName = cs.movieName;
   var preference = cs.preference;
-  //var utellyInfo = cs.utelly;
+  var utellyInfo = cs.utelly;
 
   console.log(userName);
   console.log(movieName);
   console.log(preference);
-  //console.log(utellyInfo);
+  console.log(utellyInfo);
 
   var newRow = $("<tr>").append(
     $("<td>").text(userName),
@@ -206,46 +232,46 @@ database.ref().on("child_added", function (childSnapshot) {
     //$("<td>").text(this is where the poster would go instead of NA),
     $("<td>").text("NA"),
     $("<td>").text(preference),
-    //$("<td>").text(utellyInfo),
-    $("<td>").text("NA"),
+    $("<td>").text(utellyInfo),
+    //$("<td>").text("NA"),
   );
   $("#tableInfo > tbody").append(newRow);
 })
 //Call YouTube API and returns the trailer of the movie in the current window
 //Trailer opens in smaller popup window and auto plays.  
-function openTrailerWindow () {
+function openTrailerWindow() {
 
   var videoData = {
-  
-      key:  "AIzaSyCIAfHjFbzW0UcHHSa0TrErMrubh86gN2Q",
-      part: "snippet",
-      q: title + "official trailer",
-      maxResults: 1
-  
-  
-  }
-  
-  $.ajax( {
-  
-      url: "https://www.googleapis.com/youtube/v3/search",
-      method: "GET",
-      data: videoData,
-  
-  }).then(function(response) {
-      console.log(response);
-  
-      var youtubeData = response.items;
-  
-      var videoID = youtubeData[0].id.videoId;
-      var videoURL = "https://www.youtube.com/embed/" + videoID;
-  
-      var outputVideo = $('<iframe height="300" width="500">');
-      outputVideo.attr("src", videoURL);
-      outputVideo.attr("id", "videoWindow");
-      $("#results").append(outputVideo);
 
-      window.open(videoURL, "_blank", "height=300", "width=500");
-  
-  
+    key: "AIzaSyCIAfHjFbzW0UcHHSa0TrErMrubh86gN2Q",
+    part: "snippet",
+    q: title + "official trailer",
+    maxResults: 1
+
+
+  }
+
+  $.ajax({
+
+    url: "https://www.googleapis.com/youtube/v3/search",
+    method: "GET",
+    data: videoData,
+
+  }).then(function (response) {
+    console.log(response);
+
+    var youtubeData = response.items;
+
+    var videoID = youtubeData[0].id.videoId;
+    var videoURL = "https://www.youtube.com/embed/" + videoID;
+
+    var outputVideo = $('<iframe height="300" width="500">');
+    outputVideo.attr("src", videoURL);
+    outputVideo.attr("id", "videoWindow");
+    $("#results").append(outputVideo);
+
+    window.open(videoURL, "_blank", "height=300", "width=500");
+
+
   });
 }
