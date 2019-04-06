@@ -98,6 +98,7 @@ function getSelectedGenre() {
 $("#myModal").hide();
 $(".preference").hide();
 $("#utellyBtn").hide();
+$("#trailerButton").hide();
 
 //set event listener to start function to make the API call, display poster / title / 
 //synopsis in the html
@@ -109,6 +110,7 @@ $("#searchButton").on("click", function () {
   $("#name-input").hide();
   $(".preference").show();
   $("#utellyBtn").show();
+  $("#trailerButton").show();
 
   getSelectedGenre();
   getRandomYear(2015, 2019);
@@ -209,4 +211,41 @@ database.ref().on("child_added", function (childSnapshot) {
   );
   $("#tableInfo > tbody").append(newRow);
 })
+//Call YouTube API and returns the trailer of the movie in the current window
+//Trailer opens in smaller popup window and auto plays.  
+function openTrailerWindow () {
 
+  var videoData = {
+  
+      key:  "AIzaSyCIAfHjFbzW0UcHHSa0TrErMrubh86gN2Q",
+      part: "snippet",
+      q: title + "official trailer",
+      maxResults: 1
+  
+  
+  }
+  
+  $.ajax( {
+  
+      url: "https://www.googleapis.com/youtube/v3/search",
+      method: "GET",
+      data: videoData,
+  
+  }).then(function(response) {
+      console.log(response);
+  
+      var youtubeData = response.items;
+  
+      var videoID = youtubeData[0].id.videoId;
+      var videoURL = "https://www.youtube.com/embed/" + videoID;
+  
+      var outputVideo = $('<iframe height="300" width="500">');
+      outputVideo.attr("src", videoURL);
+      outputVideo.attr("id", "videoWindow");
+      $("#results").append(outputVideo);
+
+      window.open(videoURL, "_blank", "height=300", "width=500");
+  
+  
+  });
+}
