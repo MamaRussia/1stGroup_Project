@@ -2,6 +2,7 @@
 .carousel-inner img {
 width: 100%;
 height: 100%;
+float: auto;
 }
 
 /* #placeholder-img {
@@ -11,6 +12,8 @@ height: 100%;
 
 body {
     font-family: 'Convergence';
+    background-color: black;
+  
 }
 
 
@@ -30,9 +33,10 @@ color: white;
 
 .card {
     background-color: lightskyblue;
-    color: white;
+    color: black;
     margin-top: 10px;
     border: 2px solid black;
+   
     
     }
 
