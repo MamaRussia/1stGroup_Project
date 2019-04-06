@@ -154,7 +154,7 @@ $(document).on("click", ".preference", function () {
       },
     });
     $.ajax({
-      url: "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + "Bojack" + "&country=us",
+      url: "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + title + "&country=us",
       method: "GET",
     }).then(function (response) {
       var streamArray = [];
