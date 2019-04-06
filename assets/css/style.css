@@ -1,59 +1,6 @@
-/* #placeholder-img {
-    height: 425px;
-    width: 100%;
-} */
 
-body {
-    font-family: 'Convergence';
-}
-
-
-/* css code for plaground html (jr.html) */
-#moviePoster {
-    width: 90vw;
-    max-width:200px;
-    height:300px;
+.carousel-inner img {
+width: 100%;
+height: 100%;
 
 }
-
-nav {
-background-color: lightskyblue;
-color: white;
-
-}
-
-.card {
-    background-color: lightskyblue;
-    color: white;
-    margin-top: 10px;
-    border: 2px solid black;
-    
-    }
-
- #loveBtn, #hateBtn {
-margin-left: 45px;
-
-margin-top: 45px;
-border: 2px solid black;
-  }
-
-  #searchButton {
-      margin-left:10px;
-      border: 1px solid black;
-  }
-
-  #name-input {
-    border: 2px solid black;
-    text-align:center;
-      width:55%;
-  }
-
-  #list {
-    border: 2px solid black;
-  }
-
-  #tableInfo {
-    width: 100%;
-  }
-  
-    
