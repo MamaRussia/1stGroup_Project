@@ -65,3 +65,11 @@ border: 2px solid black;
   #tableInfo {
     width: 100%;
   }
+
+  #trailer-modal {
+    width: 650px;
+}
+
+#modalBody-size {
+    width: 650px;
+}

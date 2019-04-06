@@ -57,11 +57,6 @@ function getMovies() {
   })
 }
 
-
-
-
-
-
 function renderMovieData(poster, title, synopsis) {
   $("#poster").empty();
 
@@ -134,7 +129,6 @@ $("#searchButton").on("click", function () {
     loveHateBtn.text(loveHate[i]);
     $("#preferenceBtns").append(loveHateBtn);
   }
-
 })
 
 $("#yesBtn").on("click", function () {
@@ -185,10 +179,7 @@ $(document).on("click", ".preference", function () {
         preference: preferenceType,
         utelly: streamArray.join()
       });
-
     })
-
-
   }
 
   if (chosenMovie == movies.length - 1) {
@@ -229,8 +220,6 @@ database.ref().on("child_added", function (childSnapshot) {
   var newRow = $("<tr>").append(
     $("<td>").text(userName),
     $("<td>").text(movieName),
-    //$("<td>").text(this is where the poster would go instead of NA),
-    $("<td>").text("NA"),
     $("<td>").text(preference),
     $("<td>").text(utellyInfo),
     //$("<td>").text("NA"),
@@ -247,8 +236,6 @@ function openTrailerWindow() {
     part: "snippet",
     q: title + "official trailer",
     maxResults: 1
-
-
   }
 
   $.ajax({
@@ -261,7 +248,7 @@ function openTrailerWindow() {
     console.log(response);
 
     if (response.items.length === 0) {
-      
+
       $("#myModal").modal("show");
 
     }
@@ -270,19 +257,19 @@ function openTrailerWindow() {
 
       var videoID = youtubeData[0].id.videoId;
       var videoURL = "https://www.youtube.com/embed/" + videoID;
-  
-      var outputVideo = $('<iframe height="300" width="500">');
-      outputVideo.attr("src", videoURL);
-      outputVideo.attr("id", "videoWindow");
-      $("#results").append(outputVideo);
-  
-      window.open(videoURL, "_blank", "height=300", "width=500");
+
+      //var outputVideo = $('<iframe height="300" width="500">');
+      //outputVideo.attr("src", videoURL);
+      //outputVideo.attr("id", "videoWindow");
+      //$("#trailer-content").append(outputVideo);
+      jQuery.noConflict()
+      $("#trailer-modal").modal("show");
+      $('#trailer-frame').attr('src', videoURL);
+
+      $("#closeBtn").click(function () {
+        $("#trailer-frame").removeAttr('src');
+      });
+      //window.open(videoURL, "_blank", "height=300,width=500,modal=yes");
     }
-
-   
-
-    
-
-
   });
 }
