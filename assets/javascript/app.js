@@ -22,6 +22,7 @@ var synopsis;
 var page = 1;
 var totalPages = 0;
 var movies = [];
+var pageResults;
 //var utellyResponse;
 function getMovies() {
 
@@ -44,26 +45,17 @@ function getMovies() {
 
     console.log(response);
     movies = response.results;
+    page = response.page;
+    //pageResults = page.results;
     totalPages = response.total_pages
 
     poster = movies[chosenMovie].poster_path;
     title = movies[chosenMovie].original_title;
     synopsis = movies[chosenMovie].overview;
     renderMovieData(poster, title, synopsis);
-
-    //variable array for buttons
-    var loveHate = ["Love it", "Hate it"];
-    //loop through array
-    for (var i = 0; i < loveHate.length; i++) {
-      //create buttons with classes, and append to id preferenceBtns
-      var loveHateBtn = $("<button>");
-      loveHateBtn.addClass("loveBtn hateBtn preference");
-      loveHateBtn.attr("data-preference", loveHate[i]);
-      loveHateBtn.text(loveHate[i]);
-      $("#preferenceBtns").append(loveHateBtn);
-    }
   })
 }
+
 
 function renderMovieData(poster, title, synopsis) {
   $("#poster").empty();
@@ -123,6 +115,17 @@ $("#searchButton").on("click", function () {
   $("#name-input").val();
 
   getMovies();
+  //variable array for buttons
+  var loveHate = ["Love it", "Hate it"];
+  //loop through array
+  for (var i = 0; i < loveHate.length; i++) {
+    //create buttons with classes, and append to id preferenceBtns
+    var loveHateBtn = $("<button>");
+    loveHateBtn.addClass("loveBtn hateBtn preference");
+    loveHateBtn.attr("data-preference", loveHate[i]);
+    loveHateBtn.text(loveHate[i]);
+    $("#preferenceBtns").append(loveHateBtn);
+  }
 
 })
 
@@ -138,7 +141,7 @@ $(document).on("click", ".preference", function () {
 
   if (preferenceType === "Love it") {
 
-    $.ajaxSetup({
+    /*$.ajaxSetup({
       beforeSend: function (xhr) {
         xhr.setRequestHeader("X-RapidAPI-Key", "f504da3c21mshe56c513d6a9955dp1b1c63jsn4548cb484cf3");
       },
@@ -148,24 +151,25 @@ $(document).on("click", ".preference", function () {
       method: "GET",
     }).then(function (response) {
 
-      console.log(response);
-      var utellyResponse = response;
-      var streamArray = [];
-      var userName = $("#name-input").val().trim();
+      console.log(response);*/
+    //var utellyResponse = response;
+    //var streamArray = [];
+    var userName = $("#name-input").val().trim();
 
-      database.ref().push({
-        yourName: userName,
-        movieName: movieName,
-        preference: preferenceType,
-        //utelly: streamArray.join()
-      });
-    })
+    database.ref().push({
+      yourName: userName,
+      movieName: movieName,
+      preference: preferenceType,
+      //utelly: streamArray.join()
+    });
   }
 
   if (chosenMovie == movies.length - 1) {
     if (page < totalPages) {
       page++;
       getMovies();
+      console.log("Chosen movie " + chosenMovie);
+      console.log("")
     } else {
         jQuery.noConflict();
         $("#myModal").modal("show");
@@ -178,7 +182,7 @@ $(document).on("click", ".preference", function () {
     synopsis = movies[chosenMovie].overview;
     renderMovieData(poster, title, synopsis);
   }
-});
+})
 
 database.ref().on("child_added", function (childSnapshot) {
   console.log(childSnapshot.val());
