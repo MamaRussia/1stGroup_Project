@@ -8,6 +8,35 @@ var config = {
   messagingSenderId: "648752297769"
 };
 firebase.initializeApp(config);
+function hideTable() {
+  $("#tableInfo").hide()
+  }
+  
+  function hideTable() {
+    $("#tableInfo").hide()
+    }
+  
+    function hidePosterDiv() {
+      $("#poster").hide()
+      }
+
+      function hideCarousel() {
+        $("#demo-carousel").hide()
+        }
+
+
+      function showPosterDiv() {
+        $("#poster").show()
+        }
+  
+    function showTable() {
+      $("#tableInfo").show()
+      }
+  
+  hideTable();
+  hidePosterDiv();
+
+
 
 var database = firebase.database();
 
@@ -57,12 +86,8 @@ function getMovies() {
   })
 }
 
-
-
-
-
-
 function renderMovieData(poster, title, synopsis) {
+  showPosterDiv();
   $("#poster").empty();
 
   var posterUrl = "https://image.tmdb.org/t/p/original" + poster;
@@ -72,16 +97,17 @@ function renderMovieData(poster, title, synopsis) {
   $("#poster").prepend(posterPage);
 
   var displayTitle = $("<h1>");
-  displayTitle.addClass("movie-name");
+  displayTitle.addClass("movie-name text-light");
   displayTitle.attr("data-movie-name", title);
   displayTitle.text(title);
-  $("#poster").append(displayTitle);
+  $("#poster").prepend(displayTitle);
 
   var displaySynopsis = $("<p>");
-  displaySynopsis.addClass("movie-synopsis");
+  displaySynopsis.addClass("movie-synopsis text-light bg-dark");
   displaySynopsis.attr("data-movie-synopsis", synopsis);
   displaySynopsis.text(synopsis);
   $("#poster").append(displaySynopsis);
+  // $("#trailerButton").append(displaySynopsis);
 }
 
 //generate a random year between 1980-2019 to be inserted into movie DB API query
@@ -110,6 +136,9 @@ $("#trailerButton").hide();
 //synopsis in the html
 $("#searchButton").on("click", function () {
 
+
+  
+  hideCarousel();
   $("#header").hide();
   $("#list").hide();
   $("#searchButton").hide();
@@ -129,12 +158,11 @@ $("#searchButton").on("click", function () {
   for (var i = 0; i < loveHate.length; i++) {
     //create buttons with classes, and append to id preferenceBtns
     var loveHateBtn = $("<button>");
-    loveHateBtn.addClass("loveBtn hateBtn preference");
+    loveHateBtn.addClass("loveBtn hateBtn preference btn btn-dark");
     loveHateBtn.attr("data-preference", loveHate[i]);
     loveHateBtn.text(loveHate[i]);
     $("#preferenceBtns").append(loveHateBtn);
   }
-
 })
 
 $("#yesBtn").on("click", function () {
@@ -185,10 +213,7 @@ $(document).on("click", ".preference", function () {
         preference: preferenceType,
         utelly: streamArray.join()
       });
-
     })
-
-
   }
 
   if (chosenMovie == movies.length - 1) {
@@ -229,8 +254,6 @@ database.ref().on("child_added", function (childSnapshot) {
   var newRow = $("<tr>").append(
     $("<td>").text(userName),
     $("<td>").text(movieName),
-    //$("<td>").text(this is where the poster would go instead of NA),
-    $("<td>").text("NA"),
     $("<td>").text(preference),
     $("<td>").text(utellyInfo),
     //$("<td>").text("NA"),
@@ -247,8 +270,6 @@ function openTrailerWindow() {
     part: "snippet",
     q: title + "official trailer",
     maxResults: 1
-
-
   }
 
   $.ajax({
@@ -261,7 +282,7 @@ function openTrailerWindow() {
     console.log(response);
 
     if (response.items.length === 0) {
-      
+
       $("#myModal").modal("show");
 
     }
@@ -270,19 +291,19 @@ function openTrailerWindow() {
 
       var videoID = youtubeData[0].id.videoId;
       var videoURL = "https://www.youtube.com/embed/" + videoID;
-  
-      var outputVideo = $('<iframe height="300" width="500">');
-      outputVideo.attr("src", videoURL);
-      outputVideo.attr("id", "videoWindow");
-      $("#results").append(outputVideo);
-  
-      window.open(videoURL, "_blank", "height=300", "width=500");
+
+      //var outputVideo = $('<iframe height="300" width="500">');
+      //outputVideo.attr("src", videoURL);
+      //outputVideo.attr("id", "videoWindow");
+      //$("#trailer-content").append(outputVideo);
+      jQuery.noConflict()
+      $("#trailer-modal").modal("show");
+      $('#trailer-frame').attr('src', videoURL);
+
+      $("#closeBtn").click(function () {
+        $("#trailer-frame").removeAttr('src');
+      });
+      //window.open(videoURL, "_blank", "height=300,width=500,modal=yes");
     }
-
-   
-
-    
-
-
   });
 }

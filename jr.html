@@ -5,103 +5,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Movie Tinder</title>
 
 
     <script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous">
         </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous">
         </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous">
         </script>
 
     <link href='https://fonts.googleapis.com/css?family=Convergence' rel='stylesheet'>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
-    <nav>
-        <ul class="nav justify-content-center">
-            <h1 class="card-title">Movie Tinder</h1>
-        </ul>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#"></a>
     </nav>
+
+    <nav>
+        <ul class="nav justify-content-center ">
+            <a><img id="logo" class="brand" src="../1stGroup_Project/assets/images/facebook_cover_photo_1.png" />
+            </a> </ul>
+    </nav>
+
     <br><br>
 
     <div class="container-fluid">
         <div class="container">
-
-            <div class="row">
-                <div class="col s5 m5 l3 center">
-                    <div id="header" class="card" style="width: 22rem;">
-                        <img class="card-img-top" src="assets/images/logo/Slide1.jpg">
+            <div class="mx-auto" style="width: 425px;">
+                <div class="col s3 m3 l6 ">
+                    <div id="poster"></div>
+                    <div id="header" class="card" style="width: 24rem; align-items: center">
                         <div class="card-body">
-                            <h4 class="card-title">Enter your name.</h4>
-                            <h4 class="card-text">Select the genre.</h4>
-                            <h4 class="card-text">Start liking.</h4>
+                            <h4 class="card-title">Enter your name and select a genre.</h4>
                         </div>
+                        <form class="needs-validation" novalidate>
+                            <div id="header" style="width: 250px;" class="form-group">
+                                <input type="name" class="form-control" id="name-input" placeholder="Name" required>
+                                <div class="invalid-feedback">Please enter a name.
+                                </div>
+                            </div>
+                            <div class="col center">
+                                <!-- <div id="poster"></div> -->
+                                <select id="list" onchange="getSelectedGenre();">
+                                    <option value="">Movie genres</option>
+                                    <option value="28">Action</option>
+                                    <option value="12">Adventure</option>
+                                    <option value="16">Animation</option>
+                                    <option value="35">Comedy</option>
+                                    <option value="80">Crime</option>
+                                    <option value="99">Documentary</option>
+                                    <option value="18">Drama</option>
+                                    <option value="14">Fantasy</option>
+                                    <option value="36">History</option>
+                                    <option value="27">Horror</option>
+                                    <option value="80">Crime</option>
+                                    <option value="10402">Music</option>
+                                    <option value="9648">Mystery</option>
+                                    <option value="10749">Romance</option>
+                                    <option value="878">Science Fiction</option>
+                                    <option value="53">Thriller</option>
+                                </select>
+                                <button type="submit" id="searchButton">Search</button>
+                            </div>
                     </div>
-                    <br><br>
-                    <div id="header" class="form-group">
-                        <input type="name" class="form-control" id="name-input" placeholder="Jennifer Lopez">
+                    </form>
+                    <div class="row">
+                        <div class="col s5 m5 l5 ">
+                            <!-- <div id="poster"></div> -->
+                            <br /><br />
+                            <div id="preferenceBtns"></div>
+                        </div>
+
+                        <div>
+                            <button type="button" class="btn btn-danger" id="trailerButton" onclick="openTrailerWindow();">
+                                Click to View Trailer
+                            </button>
+                        </div>
+                        <br /><br />
+                        <div id="preferenceBtns"></div>
                     </div>
-                    <div class="col center">
-                        <select id="list" onchange="getSelectedGenre();">
-                            <option value="">Movie genres</option>
-                            <option value="28">Action</option>
-                            <option value="12">Adventure</option>
-                            <option value="16">Animation</option>
-                            <option value="35">Comedy</option>
-                            <option value="80">Crime</option>
-                            <option value="99">Documentary</option>
-                            <option value="18">Drama</option>
-                            <option value="14">Fantasy</option>
-                            <option value="36">History</option>
-                            <option value="27">Horror</option>
-                            <option value="80">Crime</option>
-                            <option value="10402">Music</option>
-                            <option value="9648">Mystery</option>
-                            <option value="10749">Romance</option>
-                            <option value="878">Science Fiction</option>
-                            <option value="53">Thriller</option>
-                        </select>
-                        <button type="submit" id="searchButton">Search</button>
-                    </div>
-                    <br><br>
-                    <div id="poster">
-                    </div>
-                    <div id="demo">
-                    </div>
-                    <div>
-                        <button type="button" class="btn btn-danger" id="trailerButton" onclick="openTrailerWindow();">View Trailer</button>
-                    </div>
-                    <br><br>
-                    <div id="preferenceBtns">
-                    </div>
-                    <br><br>
+
                 </div>
                 <div class="col s7 m7 l9">
-                    <table class="table table-striped" id="tableInfo">
-                        <thead class="thead-dark">
+                    <table class="table table-striped table-dark text-light" id="tableInfo">
+                        <thead class="thead-dark font-weight-bold">
                             <tr>
                                 <th scope="col">Your Name</th>
                                 <th scope="col">Movie Name</th>
-                                <th scope="col">Poster</th>
                                 <th scope="col">Preference</th>
                                 <th scope="col">Streaming Info</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-white-50">
                             <tr>
                                 <th scope="row">MovieMan</th>
                                 <td>The best Movie!</td>
-                                <td>.....</td>
                                 <td>Love it</td>
                                 <td>Netflix, Amazon Prime, Hulu etc.</td>
                             </tr>
@@ -128,8 +136,7 @@
                                     <p>Trailer is Not Available</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                                        id="yesBtn">Yes</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal" id="yesBtn">Yes</button>
                                     <button type="button" class="btn btn-primary" id="noBtn">No</button>
                                 </div>
                             </div>
@@ -138,6 +145,70 @@
                 </div>
                 <div class="col s3 m3 l3">
                     <p></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <p></p>
+                </div>
+                <div class="col-8">
+                    <div class="modal modal fade" tabindex="-1" role="dialog" id="trailer-modal">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" id="modalBody-size">
+                                <iframe height="300" width="400" frameborder="0" allowfullscreen="" id="trailer-frame"></iframe>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeBtn">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <p></p>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                ​
+                <div id="demo-carousel" class="carousel slide" data-ride="carousel">
+                    ​
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators">
+                        <li data-target="#demo" data-slide-to="0" class="active"></li>
+                        <li data-target="#demo" data-slide-to="1"></li>
+                        <li data-target="#demo" data-slide-to="2"></li>
+                        <li data-target="#demo" data-slide-to="3"></li>
+                    </ul>
+
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="assets/images/Spring is here!.png" alt="movies1" width="250" height="10" />
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/Spring.png" alt="movie2" width="250" height="10" />
+                        </div>
+                        <div class="carousel-item">
+                            <img src="assets/images/Spring 3.png" alt="movies3" width="250" height="10" />
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#demo" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
                 </div>
             </div>
         </div>
