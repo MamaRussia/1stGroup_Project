@@ -13,16 +13,17 @@ float: auto;
 body {
     font-family: 'Convergence';
     background-color: black;
+    background-image: URL("../images/spotlight-background.png");
+    background-position: center;
+    background-attachment: fixed;
   
 }
 
-
 /* css code for plaground html (jr.html) */
 #moviePoster {
-    width: 90vw;
-    max-width:400px;
-    /* height:300px; */
-
+    width: 300px;
+    max-width:300px;
+    height:375px; 
 }
 
 nav {
@@ -35,16 +36,19 @@ color: white;
     background-color: lightskyblue;
     color: black;
     margin-top: 10px;
-    border: 2px solid black;
-   
-    
+    border: 2px solid black;   
     }
 
- #loveBtn, #hateBtn {
+ /*#loveBtn, #hateBtn {
 margin-left: 45px;
 
 margin-top: 45px;
 border: 2px solid black;
+  }*/
+
+  .preference {
+    margin: 5px;
+
   }
 
   #searchButton {
@@ -72,4 +76,8 @@ border: 2px solid black;
 
 #modalBody-size {
     width: 650px;
+}
+
+footer {
+  height: 20px;
 }
