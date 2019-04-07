@@ -138,7 +138,7 @@ $("#searchButton").on("click", function () {
 
 
   
-  hideCarousel();
+  // hideCarousel();
   $("#header").hide();
   $("#list").hide();
   $("#searchButton").hide();
