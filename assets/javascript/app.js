@@ -10,6 +10,30 @@ var config = {
 firebase.initializeApp(config);
 
 var database = firebase.database();
+function hideTable() {
+$("#tableInfo").hide()
+}
+
+function hideTable() {
+  $("#tableInfo").hide()
+  }
+
+  function hidePosterDiv() {
+    $("#poster").hide()
+    }
+    function showPosterDiv() {
+      $("#poster").show()
+      }
+
+  function showTable() {
+    $("#tableInfo").show()
+    }
+
+hideTable();
+hidePosterDiv();
+
+$("tableInfo").hide();
+$("#trailerButton").hide();
 
 //Global variables --> these variable must remain global
 var selectedGenre;
@@ -63,6 +87,7 @@ function getMovies() {
 
 
 function renderMovieData(poster, title, synopsis) {
+  showPosterDiv();
   $("#poster").empty();
 
   var posterUrl = "https://image.tmdb.org/t/p/original" + poster;
@@ -75,14 +100,17 @@ function renderMovieData(poster, title, synopsis) {
   displayTitle.addClass("movie-name");
   displayTitle.attr("data-movie-name", title);
   displayTitle.text(title);
-  $("#poster").append(displayTitle);
+  $("#poster").prepend(displayTitle);
 
   var displaySynopsis = $("<p>");
   displaySynopsis.addClass("movie-synopsis");
   displaySynopsis.attr("data-movie-synopsis", synopsis);
   displaySynopsis.text(synopsis);
   $("#poster").append(displaySynopsis);
+  // $("#trailerButton").append(displaySynopsis)
 }
+
+
 
 //generate a random year between 1980-2019 to be inserted into movie DB API query
 var getRandomYear = function (start, range) {
@@ -109,7 +137,7 @@ $("#trailerButton").hide();
 //set event listener to start function to make the API call, display poster / title / 
 //synopsis in the html
 $("#searchButton").on("click", function () {
-
+  $("#demo-carousel").hide();
   $("#header").hide();
   $("#list").hide();
   $("#searchButton").hide();
@@ -117,6 +145,7 @@ $("#searchButton").on("click", function () {
   $(".preference").show();
   $("#utellyBtn").show();
   $("#trailerButton").show();
+  
 
   getSelectedGenre();
   getRandomYear(2015, 2019);
@@ -148,6 +177,8 @@ $(document).on("click", ".preference", function () {
   var preferenceType = this.getAttribute("data-preference");
 
   if (preferenceType === "Love it") {
+    showTable();
+    $("tableInfo").show();
     $.ajaxSetup({
       beforeSend: function (xhr) {
         xhr.setRequestHeader("X-RapidAPI-Key", "f504da3c21mshe56c513d6a9955dp1b1c63jsn4548cb484cf3");

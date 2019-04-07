@@ -5,47 +5,57 @@ height: 100%;
 float: auto;
 }
 
-/* #placeholder-img {
-    height: 425px;
-    width: 100%;
-} */
+
 
 body {
     font-family: 'Convergence';
-    background-color: black;
+    background-image: url("../images/wallpaper.jpg");
   
 }
 
+#poster {
+  padding-left: 45px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+  border: 2px solid black;
 
+
+}
 /* css code for plaground html (jr.html) */
 #moviePoster {
-    width: 90vw;
-    max-width:400px;
+    width: 22vw;
+    max-width:425px;
+    
     /* height:300px; */
 
 }
 
-nav {
-background-color: lightskyblue;
-color: white;
+h1, p {
+  max-width:400px;
+}
 
+#poster {
+  background-color: white;
+}
+
+.brand {
+  width: 270px;
+  height: 125px;
+  border: 2px solid black;
 }
 
 .card {
-    background-color: lightskyblue;
+    background-color: white;
     color: black;
     margin-top: 10px;
     border: 2px solid black;
-   
     
     }
 
- #loveBtn, #hateBtn {
-margin-left: 45px;
+    img {
+      border: 2px solid black;
 
-margin-top: 45px;
-border: 2px solid black;
-  }
+    }
 
   #searchButton {
       margin-left:10px;
@@ -55,7 +65,7 @@ border: 2px solid black;
   #name-input {
     border: 2px solid black;
     text-align:center;
-      width:55%;
+      width:90%;
   }
 
   #list {
