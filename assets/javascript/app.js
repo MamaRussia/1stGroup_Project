@@ -8,6 +8,35 @@ var config = {
   messagingSenderId: "648752297769"
 };
 firebase.initializeApp(config);
+function hideTable() {
+  $("#tableInfo").hide()
+  }
+  
+  function hideTable() {
+    $("#tableInfo").hide()
+    }
+  
+    function hidePosterDiv() {
+      $("#poster").hide()
+      }
+
+      function hideCarousel() {
+        $("#demo-carousel").hide()
+        }
+
+
+      function showPosterDiv() {
+        $("#poster").show()
+        }
+  
+    function showTable() {
+      $("#tableInfo").show()
+      }
+  
+  hideTable();
+  hidePosterDiv();
+
+
 
 var database = firebase.database();
 
@@ -58,6 +87,7 @@ function getMovies() {
 }
 
 function renderMovieData(poster, title, synopsis) {
+  showPosterDiv();
   $("#poster").empty();
 
   var posterUrl = "https://image.tmdb.org/t/p/original" + poster;
@@ -70,13 +100,14 @@ function renderMovieData(poster, title, synopsis) {
   displayTitle.addClass("movie-name text-light");
   displayTitle.attr("data-movie-name", title);
   displayTitle.text(title);
-  $("#poster").append(displayTitle);
+  $("#poster").prepend(displayTitle);
 
   var displaySynopsis = $("<p>");
-  displaySynopsis.addClass("movie-synopsis text-light");
+  displaySynopsis.addClass("movie-synopsis text-light bg-dark");
   displaySynopsis.attr("data-movie-synopsis", synopsis);
   displaySynopsis.text(synopsis);
   $("#poster").append(displaySynopsis);
+  // $("#trailerButton").append(displaySynopsis);
 }
 
 //generate a random year between 1980-2019 to be inserted into movie DB API query
@@ -105,6 +136,9 @@ $("#trailerButton").hide();
 //synopsis in the html
 $("#searchButton").on("click", function () {
 
+
+  
+  hideCarousel();
   $("#header").hide();
   $("#list").hide();
   $("#searchButton").hide();
