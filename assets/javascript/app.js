@@ -67,13 +67,13 @@ function renderMovieData(poster, title, synopsis) {
   $("#poster").prepend(posterPage);
 
   var displayTitle = $("<h1>");
-  displayTitle.addClass("movie-name");
+  displayTitle.addClass("movie-name text-light");
   displayTitle.attr("data-movie-name", title);
   displayTitle.text(title);
   $("#poster").append(displayTitle);
 
   var displaySynopsis = $("<p>");
-  displaySynopsis.addClass("movie-synopsis");
+  displaySynopsis.addClass("movie-synopsis text-light");
   displaySynopsis.attr("data-movie-synopsis", synopsis);
   displaySynopsis.text(synopsis);
   $("#poster").append(displaySynopsis);
@@ -124,7 +124,7 @@ $("#searchButton").on("click", function () {
   for (var i = 0; i < loveHate.length; i++) {
     //create buttons with classes, and append to id preferenceBtns
     var loveHateBtn = $("<button>");
-    loveHateBtn.addClass("loveBtn hateBtn preference");
+    loveHateBtn.addClass("loveBtn hateBtn preference btn btn-dark");
     loveHateBtn.attr("data-preference", loveHate[i]);
     loveHateBtn.text(loveHate[i]);
     $("#preferenceBtns").append(loveHateBtn);
