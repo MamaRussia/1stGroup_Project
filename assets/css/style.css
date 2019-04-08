@@ -25,6 +25,7 @@ body {
   max-width:350px;
     
     padding-bottom: 5px;
+    margin-left: 15px;
 }
 
 #logo {
@@ -46,7 +47,9 @@ opacity: ;
     background-color: grey;
     color: black;
     margin-top: 10px;
-    border: 2px solid black;   
+    border: 2px solid black;
+    padding-left: 55px;   
+    padding-bottom: 15px;
     }
 
 
@@ -67,13 +70,14 @@ opacity: ;
     }
 
     .movie-name {
+      text-align: center;
       margin-right: 20px;
       font-size: 35px;
     }
 
   #searchButton {
       margin-left:10px;
-      border: 1px solid black;
+      border: 2px solid black;
   }
 
   #name-input {
@@ -101,3 +105,37 @@ opacity: ;
 footer {
   height: 20px;
 }
+
+#trailerButton {
+    Width: 350px;
+    height: 300px;
+
+}
+
+#synopsisDiv {
+    color: white;
+    background-color: red;
+    cursor: pointer;
+    border: 3px solid white;
+    transition: 0.25s ease-in-out;
+    
+    
+}
+
+#synopsisText {
+    padding: 15px;
+} 
+
+#viewTrailer {
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bolder;
+    padding-bottom: 10px;
+    
+
+}
+
+#synopsisDiv:hover {
+  background-color: green;
+  color: white;
