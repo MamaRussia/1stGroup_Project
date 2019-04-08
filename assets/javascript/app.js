@@ -89,6 +89,7 @@ function getMovies() {
 function renderMovieData(poster, title, synopsis) {
   showPosterDiv();
   $("#poster").empty();
+  hideCarousel();
 
   var posterUrl = "https://image.tmdb.org/t/p/original" + poster;
   var posterPage = $("<img>");
