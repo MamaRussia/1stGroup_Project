@@ -106,7 +106,7 @@ function renderMovieData(poster, title, synopsis) {
   displaySynopsis.addClass("movie-synopsis text-light bg-dark");
   displaySynopsis.attr("data-movie-synopsis", synopsis);
   displaySynopsis.text(synopsis);
-  $("#poster").append(displaySynopsis);
+  $("#synopsisText").prepend(synopsis);
   // $("#trailerButton").append(displaySynopsis);
 }
 
@@ -130,7 +130,7 @@ function getSelectedGenre() {
 $("#myModal").hide();
 $(".preference").hide();
 $("#utellyBtn").hide();
-$("#trailerButton").hide();
+$("#synopsisDiv").hide();
 
 //set event listener to start function to make the API call, display poster / title / 
 //synopsis in the html
@@ -145,7 +145,7 @@ $("#searchButton").on("click", function () {
   $("#name-input").hide();
   $(".preference").show();
   $("#utellyBtn").show();
-  $("#trailerButton").show();
+  $("#synopsisDiv").show();
 
   getSelectedGenre();
   getRandomYear(2015, 2019);

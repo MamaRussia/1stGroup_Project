@@ -25,6 +25,7 @@ body {
   max-width:350px;
     
     padding-bottom: 5px;
+    margin-left: 15px;
 }
 
 #logo {
@@ -67,6 +68,7 @@ opacity: 0.3;
     }
 
     .movie-name {
+      text-align: center;
       margin-right: 20px;
       font-size: 35px;
     }
@@ -101,3 +103,37 @@ opacity: 0.3;
 footer {
   height: 20px;
 }
+
+#trailerButton {
+    Width: 350px;
+    height: 300px;
+
+}
+
+#synopsisDiv {
+    color: white;
+    background-color: red;
+    cursor: pointer;
+    border: 3px solid white;
+    transition: 0.25s ease-in-out;
+    
+    
+}
+
+#synopsisText {
+    padding: 15px;
+} 
+
+#viewTrailer {
+    color: black;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bolder;
+    padding-bottom: 10px;
+    
+
+}
+
+#synopsisDiv:hover {
+  background-color: green;
+  color: white;
