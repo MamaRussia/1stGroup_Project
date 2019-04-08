@@ -28,31 +28,32 @@
 
 <body>
 
+    
     <nav>
 
         <ul class="nav justify-content-center ">
-            <a><img id="logo" class="brand" src="assets/images/Logoheader.png" />
+            <a><img id="logo" class="brand" src="assets/images/Logo2.png" />
             </a> </ul>
     </nav>
 
     <br><br>
 
     <div class="container-fluid">
-        <div class="container">
+        <div class="container"style="align-self:center;">
             <div class="mx-auto" style="width: 425px;">
-                <div class="col s3 m3 l6 ">
+                <div class="col-sm-6" >
                     <div id="poster"></div>
                     <div id="header" class="card " style="width: 24rem;">
                         <div class="card-body">
                             <h4 class="card-title">Enter your name and select a genre.</h4>
                         </div>
                         <!-- <form class="needs-validation" novalidate> -->
-                        <div id="header" style="width: 350px;" class="form-group">
+                        <div id="header" style="width: 250px;" class="form-group">
                             <input type="name" class="form-control" id="name-input" placeholder="name" required>
                             <div class="invalid-feedback">Please enter a name.
                             </div>
                         </div>
-                        <div class="col center">
+                        <div class="col-sm-6">
                             <!-- <div id="poster"></div> -->
                             <select id="list" onchange="getSelectedGenre();">
                                 <option value="">Movie genres</option>
@@ -212,7 +213,7 @@
         </div>
     </div>
 
-    <scipt src="assets/javascript/firebase.js"></scipt>
+    <script src="assets/javascript/firebase.js"></scipt>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="assets/javascript/app.js"></script>
 </body>
