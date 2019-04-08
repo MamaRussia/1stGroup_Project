@@ -33,12 +33,7 @@ body {
   max-height: 125px;
 }
 
-nav {
 
-opacity:;
-
-
-}
 
 .no-padding {
   padding-left: 0;
@@ -46,12 +41,13 @@ opacity:;
 }
 
 .card {
-    background-color: grey;
+    background-color: lightgrey;
     color: black;
     margin-top: 10px;
     border: 2px solid black;
     padding-left: 55px;   
     padding-bottom: 15px;
+    opacity: .6.75;
     }
 
 
@@ -152,3 +148,4 @@ margin-right: 20px;
 #synopsisDiv:hover {
   background-color: green;
   color: white;
+}
