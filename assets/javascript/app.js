@@ -89,6 +89,7 @@ function getMovies() {
 function renderMovieData(poster, title, synopsis) {
   showPosterDiv();
   $("#poster").empty();
+  $("#synopsisText").empty();
   hideCarousel();
 
   var posterUrl = "https://image.tmdb.org/t/p/original" + poster;
@@ -107,7 +108,7 @@ function renderMovieData(poster, title, synopsis) {
   displaySynopsis.addClass("movie-synopsis text-light bg-dark");
   displaySynopsis.attr("data-movie-synopsis", synopsis);
   displaySynopsis.text(synopsis);
-  $("#synopsisText").prepend(synopsis + "Click to View Trailer");
+  $("#synopsisText").append(synopsis);
   // $("#trailerButton").append(displaySynopsis);
 }
 
@@ -225,7 +226,7 @@ $(document).on("click", ".preference", function () {
       console.log("Chosen movie " + chosenMovie);
       console.log("")
     } else {
-      jQuery.noConflict();
+      
       $("#myModal").modal("show");
       //  no more movies for this genre message
     }
@@ -263,48 +264,46 @@ database.ref().on("child_added", function (childSnapshot) {
 })
 //Call YouTube API and returns the trailer of the movie in the current window
 //Trailer opens in smaller popup window and auto plays.  
-function openTrailerWindow() {
+function openTrailerWindow () {
 
   var videoData = {
-
-    key: "AIzaSyCIAfHjFbzW0UcHHSa0TrErMrubh86gN2Q",
-    part: "snippet",
-    q: title + "official trailer",
-    maxResults: 1
+  
+      key:  "AIzaSyCIAfHjFbzW0UcHHSa0TrErMrubh86gN2Q",
+      part: "snippet",
+      q: title + "official trailer",
+      maxResults: 1
+  
+  
   }
-
-  $.ajax({
-
-    url: "https://www.googleapis.com/youtube/v3/search",
-    method: "GET",
-    data: videoData,
-
-  }).then(function (response) {
-    console.log(response);
-
+  
+  $.ajax( {
+  
+      url: "https://www.googleapis.com/youtube/v3/search",
+      method: "GET",
+      data: videoData,
+  
+  }).then(function(response) {
+      
     if (response.items.length === 0) {
 
       $("#myModal").modal("show");
 
-    }
-    else {
-      var youtubeData = response.items;
+    } else {
+  
+        var youtubeData = response.items;
+    
+        var videoID = youtubeData[0].id.videoId;
+        var videoURL = "https://www.youtube.com/embed/" + videoID;
+    
+        var outputVideo = $('<iframe>');
+        outputVideo.attr("src", videoURL);
+        outputVideo.attr("id", "videoWindow");
+        $("#results").append(outputVideo);
 
-      var videoID = youtubeData[0].id.videoId;
-      var videoURL = "https://www.youtube.com/embed/" + videoID;
-
-      //var outputVideo = $('<iframe height="300" width="500">');
-      //outputVideo.attr("src", videoURL);
-      //outputVideo.attr("id", "videoWindow");
-      //$("#trailer-content").append(outputVideo);
-      jQuery.noConflict()
-      $("#trailer-modal").modal("show");
-      $('#trailer-frame').attr('src', videoURL);
-
-      $("#closeBtn").click(function () {
-        $("#trailer-frame").removeAttr('src');
-      });
-      //window.open(videoURL, "_blank", "height=300,width=500,modal=yes");
-    }
+        window.open(videoURL, "_blank", "height=300,width=500");
+      };
+  
   });
+  
+
 }
