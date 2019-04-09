@@ -8,33 +8,29 @@ var config = {
   messagingSenderId: "648752297769"
 };
 firebase.initializeApp(config);
+
 function hideTable() {
   $("#tableInfo").hide()
-  }
-  
-  function hideTable() {
-    $("#tableInfo").hide()
-    }
-  
-    function hidePosterDiv() {
-      $("#poster").hide()
-      }
+}
 
-      function hideCarousel() {
-        $("#demo-carousel").hide()
-        }
+function hidePosterDiv() {
+  $("#poster").hide()
+}
 
+function hideCarousel() {
+  $("#demo-carousel").hide()
+}
 
-      function showPosterDiv() {
-        $("#poster").show()
-        }
-  
-    function showTable() {
-      $("#tableInfo").show()
-      }
-  
-  hideTable();
-  hidePosterDiv();
+function showPosterDiv() {
+  $("#poster").show()
+}
+
+function showTable() {
+  $("#tableInfo").show()
+}
+
+hideTable();
+hidePosterDiv();
 
 
 
@@ -94,6 +90,7 @@ function renderMovieData(poster, title, synopsis) {
 
   var posterUrl = "https://image.tmdb.org/t/p/original" + poster;
   var posterPage = $("<img>");
+  posterPage.addClass("img-fluid");
   posterPage.attr("src", posterUrl);
   posterPage.attr("id", "moviePoster");
   $("#poster").prepend(posterPage);
@@ -138,8 +135,9 @@ $("#synopsisDiv").hide();
 //synopsis in the html
 $("#searchButton").on("click", function () {
 
+  //show table
+  showTable();
 
-  
   // hideCarousel();
   $("#header").hide();
   $("#list").hide();
@@ -226,7 +224,7 @@ $(document).on("click", ".preference", function () {
       console.log("Chosen movie " + chosenMovie);
       console.log("")
     } else {
-      
+
       $("#myModal").modal("show");
       //  no more movies for this genre message
     }
@@ -264,46 +262,45 @@ database.ref().on("child_added", function (childSnapshot) {
 })
 //Call YouTube API and returns the trailer of the movie in the current window
 //Trailer opens in smaller popup window and auto plays.  
-function openTrailerWindow () {
+function openTrailerWindow() {
 
   var videoData = {
-  
-      key:  "AIzaSyCIAfHjFbzW0UcHHSa0TrErMrubh86gN2Q",
-      part: "snippet",
-      q: title + "official trailer",
-      maxResults: 1
-  
-  
-  }
-  
-  $.ajax( {
-  
-      url: "https://www.googleapis.com/youtube/v3/search",
-      method: "GET",
-      data: videoData,
-  
-  }).then(function(response) {
-      
-    if (response.items.length === 0) {
 
+    key: "AIzaSyCIAfHjFbzW0UcHHSa0TrErMrubh86gN2Q",
+    part: "snippet",
+    q: title + "official trailer",
+    maxResults: 1
+
+
+  }
+
+  $.ajax({
+
+    url: "https://www.googleapis.com/youtube/v3/search",
+    method: "GET",
+    data: videoData,
+
+  }).then(function (response) {
+
+    if (response.items.length === 0) {
       $("#myModal").modal("show");
 
     } else {
-  
-        var youtubeData = response.items;
-    
-        var videoID = youtubeData[0].id.videoId;
-        var videoURL = "https://www.youtube.com/embed/" + videoID;
-    
-        var outputVideo = $('<iframe>');
-        outputVideo.attr("src", videoURL);
-        outputVideo.attr("id", "videoWindow");
-        $("#results").append(outputVideo);
 
-        window.open(videoURL, "_blank", "height=300,width=500");
-      };
-  
+      var youtubeData = response.items;
+
+      var videoID = youtubeData[0].id.videoId;
+      var videoURL = "https://www.youtube.com/embed/" + videoID;
+
+      var outputVideo = $('<iframe>');
+      outputVideo.attr("src", videoURL);
+      outputVideo.attr("id", "videoWindow");
+      $("#results").append(outputVideo);
+
+      window.open(videoURL, "_blank", "height=300,width=500");
+    };
+
   });
-  
+
 
 }
