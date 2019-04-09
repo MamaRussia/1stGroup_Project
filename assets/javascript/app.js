@@ -107,7 +107,7 @@ function renderMovieData(poster, title, synopsis) {
   displaySynopsis.addClass("movie-synopsis text-light bg-dark");
   displaySynopsis.attr("data-movie-synopsis", synopsis);
   displaySynopsis.text(synopsis);
-  $("#synopsisText").prepend(synopsis);
+  $("#synopsisText").prepend(synopsis + "Click to View Trailer");
   // $("#trailerButton").append(displaySynopsis);
 }
 

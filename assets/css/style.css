@@ -6,10 +6,6 @@ float: auto;
 }
 
 
-/* #placeholder-img {
-    height: 425px;
-    width: 100%;
-} */
 
 body {
     font-family: 'Convergence';
@@ -33,12 +29,7 @@ body {
   max-height: 125px;
 }
 
-nav {
 
-opacity:;
-
-
-}
 
 .no-padding {
   padding-left: 0;
@@ -152,3 +143,4 @@ margin-right: 20px;
 #synopsisDiv:hover {
   background-color: green;
   color: white;
+}
